@@ -1,6 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { getUserSurvey } from "@/app/actions/survey";
+import { getAvailableSurveys } from "@/app/actions/surveys";
 import ResearchHub from "@/components/research/research-hub";
 
 export default async function ResearchPage() {
@@ -10,12 +11,21 @@ export default async function ResearchPage() {
     redirect("/sign-in");
   }
 
-  // Check if user has completed their starter profile
+  // Get user's profile survey
   const surveyResult = await getUserSurvey();
   
   if (!surveyResult.success || !surveyResult.data) {
     redirect("/starter");
   }
 
-  return <ResearchHub userSurvey={surveyResult.data} />;
+  // Get available custom surveys
+  const customSurveysResult = await getAvailableSurveys();
+  const customSurveys = customSurveysResult.success ? customSurveysResult.data : [];
+
+  return (
+    <ResearchHub 
+      userSurvey={surveyResult.data} 
+      customSurveys={customSurveys || []} 
+    />
+  );
 }

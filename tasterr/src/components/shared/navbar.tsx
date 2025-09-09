@@ -81,7 +81,7 @@ export function Navbar() {
                 asChild
                 className="bg-red-600 text-white hover:bg-red-700 font-semibold"
               >
-                <Link href="/research">🎯 Start Survey</Link>
+                <Link href="/research">🎯 Research Hub</Link>
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
@@ -142,10 +142,9 @@ export function Navbar() {
             >
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-red-500/20">
                 {[
-                  { href: "/take-survey", label: "Take Survey" },
-                  { href: "/my-responses", label: "My Responses" },
-                  { href: "/rewards", label: "Rewards" },
-                  { href: "/leaderboard", label: "Leaderboard" },
+                  { href: "/research", label: "Research hub" },
+                  { href: "/about", label: "About us" },
+                  { href: "/funky-data", label: "Funky data" },
                 ].map((item, index) => {
                   const isActive = pathname === item.href;
                   return (
@@ -190,7 +189,7 @@ export function Navbar() {
                       asChild
                       className="ml-auto bg-red-600 text-white hover:bg-red-700 font-semibold"
                     >
-                      <Link href="/surveys/new">🎯 Start Survey</Link>
+                      <Link href="/research">🎯 Research Hub</Link>
                     </Button>
                   </div>
                 </motion.div>
